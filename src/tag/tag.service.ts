@@ -9,6 +9,7 @@ export class TagService {
     @InjectRepository(TagEntity)
     private readonly tagRepository: Repository<TagEntity>,
   ) {}
+
   getAll() {
     return this.tagRepository.find();
   }

@@ -1,4 +1,14 @@
-import { BeforeInsert, BeforeUpdate, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import {
+  BeforeInsert,
+  BeforeUpdate,
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import * as bcrypt from 'bcrypt';
 
 @Entity({ name: 'users' })
@@ -18,13 +28,13 @@ export class UserEntity {
   @Column({ default: '' })
   image: string;
 
-  @Column() 
-  password: string;
+  @Column()
+  password?: string;
 
   @BeforeInsert()
   @BeforeUpdate()
-  async hashpassword(){
-    if(this.password){
+  async hashpassword() {
+    if (this.password) {
       const salt = await bcrypt.genSalt(10);
       this.password = await bcrypt.hash(this.password, 10);
     }

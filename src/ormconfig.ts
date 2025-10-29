@@ -14,8 +14,8 @@ const ormConfig: PostgresConnectionOptions = {
   // Let CLI control migrations explicitly
   migrationsRun: false,
 
-  // Avoid loading both TS and JS entity files at once (can double-register)
-  entities: [__dirname + '/**/*.entity.ts'],
+  // Load entities from both TS and JS files for dev/prod compatibility
+  entities: [__dirname + '/**/*.entity{.ts,.js}'],
   migrationsTableName: 'migrations',
   migrations: [__dirname + '/migrations/**/*.ts'],
 
