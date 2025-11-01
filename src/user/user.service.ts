@@ -10,6 +10,7 @@ import { IUserResponse } from './types/userResponse.interface';
 import { sign } from 'jsonwebtoken';
 import { compare } from 'bcrypt';
 import { LoginUserDto } from './dto/loginUser.dto';
+import { UpdateUserDto } from './dto/updateUser.dto';
 
 @Injectable()
 export class UserService {
@@ -86,5 +87,12 @@ export class UserService {
     delete user.password;
 
     return user;
+  }
+
+  async updateUser(userId: number, updateUserDto: UpdateUserDto){
+    const user = await this.findUserById(userId);
+    Object.assign(user, updateUserDto);
+
+    return this.userRepository.save(user);
   }
 }
