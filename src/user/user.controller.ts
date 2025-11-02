@@ -13,7 +13,6 @@ import { UserService } from './user.service';
 import { CreateUserDto } from './dto/createUser.dto';
 import { IUserResponse } from './types/userResponse.interface';
 import { LoginUserDto } from './dto/loginUser.dto';
-import { AuthRequest } from "@/src/types/expressRequest.interface";
 import { User } from './decorators/user.decorator';
 import { UserGuard } from './user.guard';
 import { UpdateUserDto } from './dto/updateUser.dto';
